@@ -10,9 +10,10 @@ import os
 def cls():
     os.system('cls' if os.name=='nt' else 'clear')
 
-filenotok = True
+file_not_ok = True
     
-while filenotok:
+while file_not_ok:
+    """Пробуем загрузить файл"""
     
     print(
         """
@@ -21,7 +22,6 @@ while filenotok:
 Если требуется загрузить данные из другого файла:
 введите имя файла и нажмите "Ввод"
         """)
-    fl=''
     fl = input()
     if fl == '':
         fl = 'goods'
@@ -31,12 +31,14 @@ while filenotok:
     except FileNotFoundError:
         print(f'{fl} - такой файл не найден')
     else:
-        filenotok = False
+        file_not_ok = False
         
 data_observer = Core.ProductList(data.data)
 menu = 0
 
 while menu != 7:
+    """Основной цикл интерфейса программы"""
+
     cls()
     menu = 0
     print(f'{fl} - файл успешно загружен \n')
@@ -56,7 +58,7 @@ while menu != 7:
         """
         )
     try:
-        inp = int(input('Вводить сюды: '))
+        inp = int(input('Введите команду: '))
     except:
         print('Введите число в диапазоне 1-7')
     else:
@@ -79,7 +81,7 @@ while menu != 7:
         print('Товар с минимальным количеством:')
         print(data_observer.min_quantity())
     elif menu == 7:   
-        print('Вы ушли, не сказав "I`ll be back"')
+        print('Вы вышли, программа прекращает работу')
     input('Нажмите "Ввод" для продолжения ')
     
 

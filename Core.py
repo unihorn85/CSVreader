@@ -3,6 +3,7 @@
 # Реализация функционала обработчика csv файлов
 
 class Product:
+    """Класс Товар """
     def __init__(self, name, price, quantity):
         self.name = name
         self.price = int(price)
@@ -17,19 +18,22 @@ class Product:
         
         
 class ProductList:
+    """Класс список товаров """
     def __init__(self, productlist):
         self.productlist = [Product(i[0], i[1], i[2]) for i in productlist]
         
     def product_midle_price(self):
+        """Вычисление средней цены товаров"""
         total_quantity = 0
         total_sum = 0
         for elem in self.productlist:
             total_quantity += elem.quantity
             total_sum += elem.quantity * elem.price
             
-        return total_sum / total_quantity
+        return "%.2f" % (total_sum / total_quantity)
         
     def most_expensive(self):
+        """Определение самого дорогого товара"""
         most_exp = self.productlist[0]
         for elem in self.productlist:
             if elem.price > most_exp.price:
@@ -38,6 +42,7 @@ class ProductList:
         return most_exp
         
     def most_cheapest(self):
+        """Определение самого дешевого товара"""
         most_cheap = self.productlist[0]
         for elem in self.productlist:
             if elem.price < most_cheap.price:
@@ -46,6 +51,7 @@ class ProductList:
         return most_cheap
         
     def max_quantity(self):
+        """Определение товара с максимальным количеством"""
         maxq = self.productlist[0]
         for elem in self.productlist:
             if elem.quantity > maxq.quantity:
@@ -54,6 +60,7 @@ class ProductList:
         return maxq
         
     def min_quantity(self):
+        """Определение товара с минимальным количеством"""
         minq = self.productlist[0]
         for elem in self.productlist:
             if elem.quantity < minq.quantity:

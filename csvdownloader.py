@@ -13,19 +13,8 @@ class CSV_worker():
                 pl.append(row)
         self.data = pl
             
-    def stop(self, filename, data, delimiter=':'):
+    def save(self, filename, data, delimiter=':'):
         with open(filename, 'w') as f:
             writer = csv.writer(f, delimiter)
             for row in data:
                 writer.writerow(row)
-"""
-Возможно понадобиться...                
-    def dictr(self, filename, delimiter=':'):        
-        with open(filename) as f:
-            reader = csv.DictReader(f, delimiter=delimiter)
-            pl = []
-            for row in reader:
-                pl.append(row)
-                print(row)
-        self.data = pl
-"""
