@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# Реализация мнтерфейса работы с csv форматом
+# Реализация интерфейса работы с csv форматом
 
 from csvdownloader import CSV_worker
 import Core
@@ -28,13 +28,21 @@ while file_not_ok:
     cls()
     try:
         data = CSV_worker(filename=fl, delimiter=':')
-    except FileNotFoundError:
+    except:
         print(f'{fl} - такой файл не найден')
     else:
         file_not_ok = False
-        
-data_observer = Core.ProductList(data.data)
+
 menu = 0
+try:
+    data_observer = Core.ProductList(data.data)
+except:
+    menu = 7
+    print(f'Ошибка создания списка товаров из файла {fl}')
+else:
+    if data_observer.productlist == []:
+        print(f'Данные не были загружены, возможно файл {fl} пуст')
+        menu = 7
 
 while menu != 7:
     """Основной цикл интерфейса программы"""

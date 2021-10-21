@@ -29,7 +29,6 @@ class ProductList:
         for elem in self.productlist:
             total_quantity += elem.quantity
             total_sum += elem.quantity * elem.price
-            
         return "%.2f" % (total_sum / total_quantity)
         
     def most_expensive(self):
@@ -73,3 +72,8 @@ class ProductList:
         for elem in self.productlist:
             print(elem)
         return '\n Конец списка \n'
+
+
+if __name__ == "__main__":
+    print('Это файл описания классов для товаров и списка товаров')
+    print('Для тестирования программы запускать interface.py')

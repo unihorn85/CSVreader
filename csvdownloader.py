@@ -18,3 +18,8 @@ class CSV_worker():
             writer = csv.writer(f, delimiter)
             for row in data:
                 writer.writerow(row)
+                
+
+if __name__ == "__main__":
+    print('Это файл описания класса работы с csv')
+    print('Для тестирования программы запускать interface.py')
