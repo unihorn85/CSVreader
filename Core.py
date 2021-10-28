@@ -20,6 +20,8 @@ class Product:
 class ProductList:
     """Класс список товаров """
     def __init__(self, productlist):
+        if productlist == []:
+            raise IndexError('Получен пустой список')
         self.productlist = [Product(i[0], i[1], i[2]) for i in productlist]
         
     def product_midle_price(self):
@@ -29,6 +31,7 @@ class ProductList:
         for elem in self.productlist:
             total_quantity += elem.quantity
             total_sum += elem.quantity * elem.price
+            
         return "%.2f" % (total_sum / total_quantity)
         
     def most_expensive(self):
@@ -68,10 +71,13 @@ class ProductList:
         return minq
         
     def __str__(self):
-        print('\n Начало списка \n')
+        """Формирование текстового вывода"""
+        text = ' Начало списка' + '\n'
         for elem in self.productlist:
-            print(elem)
-        return '\n Конец списка \n'
+            text += elem.__str__() + '\n'
+        text += ' Конец списка'
+        
+        return text
 
 
 if __name__ == "__main__":

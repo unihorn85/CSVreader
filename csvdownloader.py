@@ -5,6 +5,8 @@
 import csv
 
 class CSV_worker():
+    """Класс для работы с файлами csv формата"""
+    # Пока реализован только необходимый функционал
     def __init__(self, filename, delimiter=':'):        
         with open(filename) as f:
             reader = csv.reader(f, delimiter=delimiter)
