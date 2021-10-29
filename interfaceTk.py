@@ -19,6 +19,7 @@ class CSVreader():
         self.init_gui()
         
     def open_file(self):
+        """Метод открытия файла с рядом проверок"""
         try:
             fl = filedialog.askopenfilename()
             if fl == ():
@@ -46,7 +47,8 @@ class CSVreader():
                 self.button_most_cheapest.configure(state=NORMAL)
                 self.button_max_quantity.configure(state=NORMAL)
                 self.button_min_quantity.configure(state=NORMAL)
-                    
+                
+    """Методы отображения данных"""                
     def show_products(self):
         self.info.delete(1.0, END)
         self.info.insert(1.0, self.data_observer.__str__())
@@ -72,11 +74,14 @@ class CSVreader():
         self.info.insert(1.0, str(self.data_observer.min_quantity()))
             
     def init_gui(self):
+        """Инициализация GUI"""
         file_choose = Frame(self.root, relief = 'raised', bd=2)
         file_choose.pack(fill = X)
         
-        self.statuslabel = Label(file_choose, text="Выберите файл со списком товаров")
-        self.loadbutton = Button(file_choose, text="Выбрать файл", command=self.open_file)
+        self.statuslabel = Label(file_choose, 
+                        text="Выберите файл со списком товаров")
+        self.loadbutton = Button(file_choose, 
+                        text="Выбрать файл", command=self.open_file)
         self.statuslabel.pack()
         self.loadbutton.pack()
         
@@ -104,7 +109,7 @@ class CSVreader():
         
         button_deck.pack()
         
-        self.info = scrolledtext.ScrolledText(self.root, fg="lightgreen", bg='black')
+        self.info = scrolledtext.ScrolledText(self.root, fg="green", bg='black')
         self.info.pack(expand=1)
 
 if __name__ == '__main__':
